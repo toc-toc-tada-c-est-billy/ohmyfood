@@ -1,0 +1,597 @@
+@import './_variables';
+@import './_mixins';
+@import './_placeholders';
+
+// Utilities
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding-inline-start: unset;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Roboto', 'Shrikhand', sans-serif;
+    margin: unset;
+}
+
+i {
+    font-style: unset;
+}
+
+p {
+    font-size: 16px;
+}
+
+// PRELOADER
+
+/*
+.preloader {
+    z-index: 1001;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: $background-main;
+    @extend %flex-center;
+    animation: preloader ease-out forwards 2s;
+
+    &__element {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 50px;
+        width: 50px;
+        margin: -25px 0 0 -25px;
+        border: 5px solid transparent;
+        border-top-color: #000000;
+        border-bottom-color: #000000;
+        border-radius: 50%;
+        animation: preloader__element 1s linear infinite;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            bottom: 5px;
+            left: 5px;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            background: rgba(110, 165, 44, 0.3);
+        }
+    }
+}
+
+@keyframes preloader {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes preloader__element {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+*/
+// // Heading
+
+// Header
+
+.header {
+    @extend %flex-center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    width: 100%;
+    height: 60px;
+
+    &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        box-shadow: $shadow-main;
+        width: 100%;
+        height: 60px;
+    }
+
+    & .logo {
+        height: 30px;
+    }
+}
+
+// Location
+
+.location {
+    height: 50px;
+    width: 100%;
+    @extend %flex-center;
+    background-color: $background-location;
+
+    &__icon {
+        margin-right: 15px;
+    }
+}
+
+.heading {
+    background-color: $background-main;
+
+    &__container {
+        @extend %flex-center;
+        @extend %flex-column;
+        @extend %padding-inline;
+        @extend %padding-vertical;
+    }
+
+    &__title {
+        @extend %text-center;
+        font-size: 22px;
+        font-weight: 900;
+        padding-inline: 30px;
+    }
+
+    &__text {
+        @extend %text-center;
+        margin-top: 10px;
+    }
+}
+
+.btn__calltoaction {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    @extend %flex-center;
+    cursor: pointer;
+    box-shadow: $shadow-main;
+    width: fit-content;
+    height: 45px;
+    @extend %radius--modifier;
+    background: $gradient;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    transition-duration: 0.4s;
+
+    &:hover {
+        box-shadow: $shadow-main--modifier;
+    }
+
+}
+
+// // Main
+
+// Intro
+
+.intro {
+    @extend %padding-inline;
+    @extend %padding-vertical;
+
+    &__container {
+        margin-top: 20px;
+        display: flex;
+        @extend %flex-column;
+        @extend %gap;
+    }
+}
+
+.btn__intro {
+    position: relative;
+    @extend %flex-center--modifier;
+    width: 100%;
+    height: 60px;
+    background-color: $background-main;
+    border: none;
+    cursor: default;
+    @extend %radius-main;
+    box-shadow: $shadow-main;
+    font-weight: 600;
+
+    &--modifier {
+        @extend .btn__intro;
+        background-color: #F5EDFF;
+    }
+
+    &__nbr {
+        z-index: 1;
+        position: absolute;
+        @extend %flex-center;
+        left: -3%;
+        background-color: #9356DC;
+        color: white;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+        @extend %radius--modifier;
+    }
+
+    &__overlay {
+        @extend %flex-center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        color: black;
+        @extend %radius-main;
+        opacity: 0;
+        transition: ease-in-out 0.3s;
+        &--modifier {
+            @extend .btn__intro__overlay;
+            font-family: 'Shrikhand';
+            font-weight: 100;
+
+            &::after {
+                font-family: "Font Awesome 5 Free";
+                content:'\f358';
+                padding-left: 20px;
+                font-size: 20px;
+                color: #9356DC;
+            }
+        }
+    }
+
+    &:hover &__overlay {
+        opacity: 1;
+    }
+
+    &__icon {
+        color: #7C7C7C;
+        font-size: 16px;
+        width: 15%;
+        padding-left: 4%;
+
+        &--modifier {
+            @extend .btn__intro__icon;
+            color: #9356DC;
+        }
+
+    }
+}
+
+// Card
+
+.main__card {
+    background-color: $background-main;
+    padding-bottom: 40px;
+
+    &__heading {
+        @extend %padding-inline;
+        @extend %padding-vertical;
+    }
+
+    &__list {
+        @extend %flex-center--modifier;
+        @extend %flex-column;
+        margin-top: 20px;
+        @extend %padding-inline;
+        @extend %gap;
+    }
+}
+
+.card {
+    @extend %radius-main;
+    box-shadow: $shadow-main;
+    aspect-ratio: 4/3;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+
+    &__image__container {
+        height: 70%;
+        position: relative;
+        // .card__image__absolute-el --> absolutely relative
+    }
+
+    &__image {
+        width: 100%;
+
+        &__absolute-el {
+            @extend %flex-center;
+            position: absolute;
+            padding: 2%;
+            padding-inline: 4%;
+            font-weight: 700;
+            top: 5%;
+            right: 5%;
+            background-color: #99E2D0;
+            color: rgba(0, 0, 0, .4);
+            border-radius: 2px;
+        }
+    }
+
+    &__text__container {
+        @extend %flex-center--modifier;
+        position: relative;
+        background-color: white;
+        height: 30%;
+    }
+
+    &__text {
+        width: 80%;
+        height: 100%;
+
+        &__title,
+        &__body {
+            @extend %flex-center--modifier;
+            @extend %flex-start;
+            @extend %padding-inline;
+            height: 50%;
+        }
+
+        &__icon {
+            @extend %flex-center;
+            height: 100%;
+            width: 20%;
+            font-size: 22px;
+        }
+    }
+}
+
+// // Footer
+
+.footer {
+    @extend %flex-center--modifier;
+    @extend %flex-baseline;
+    @extend %flex-column;
+    @extend %flex-start;
+    @extend %padding-inline;
+    padding-inline: 10%; // yes
+    @extend %padding-vertical;
+    background-color: $background-footer;
+    color: white;
+    gap: 5px;
+
+    &__logo {
+        height: 20px;
+        padding-bottom: 15px;
+    }
+
+    &__icon__container {
+        @extend %flex-center--modifier;
+        color: white;
+    }
+
+    &__icon {
+        @extend %text-center;
+        margin-right: 5px;
+        width: 20px;
+        font-size: 14px;
+
+        &--modifier {
+            @extend .footer__icon;
+            transform: rotate(135deg);
+        }
+    }
+}
+
+// // // PAGES
+
+// Heading
+
+.heading__secondary {
+    width: 100%;
+
+    &__container {
+        @extend %flex-center;
+        @extend %flex-column;
+        position: relative;
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__title__container {
+        @extend %flex-center;
+        @extend %flex-start;
+        position: absolute;
+        bottom: -2px;
+        width: 90%;
+        background-color: $background-main;
+        @extend %padding-inline;
+        border-radius: 25px 25px 0 0;
+        padding-top: 30px;
+    }
+
+    &__title {
+        width: 80%;
+        font-family: 'Shrikhand';
+        font-style: italic;
+    }
+
+    &__icon {
+        @extend .card__text__icon;
+    }
+}
+
+.card__secondary {
+    background-color: $background-main;
+    @extend %padding-inline;
+
+    & .return__button {
+        position: sticky;
+        @extend %radius-main;
+        @extend %flex-center;
+        z-index: 1000;
+        width: fit-content;
+        height: fit-content;
+        top: 30%;
+        left: 100%;
+        padding: 10px;
+        cursor: pointer;
+        background-color: rgba($color: #6EA52C, $alpha: 0.3);
+
+        & i {
+            padding-right: 5px;
+        }
+
+        & a {
+            font-family: 'Shrikhand';
+            font-style: italic;
+            color: black;
+        }
+    }
+
+    &__container {
+        @extend %flex-center--modifier;
+        @extend %flex-column;
+        align-items: flex-start;
+        @extend %gap;
+
+        &__title {
+            position: relative;
+            font-weight: 300;
+            font-variant: all-small-caps;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 40px;
+                height: 3px;
+                bottom: 0;
+                transform: translateY(6px);
+                left: 0;
+                background-color: $secondary__project__color;
+                opacity: 0.3;
+            }
+        }
+
+    }
+}
+
+
+.btn__secondary {
+    cursor: pointer;
+    @extend .btn__intro;
+    padding: unset;
+    background-color: white;
+    opacity: 0;
+    overflow: hidden;
+
+    &__body {
+        display: flex;
+        @extend %flex-column;
+        padding-left: 5%;
+        width: 80%;
+        height: 100%;
+        overflow: hidden;
+        transition-duration: 0.6s;
+    }
+
+    & p,
+    & h3 {
+        text-overflow: ellipsis;
+    }
+
+    &__title {
+        text-align: left;
+        font-weight: 600;
+        height: 50%;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-top: 8px;
+    }
+
+    &__text {
+        @extend .btn__secondary__title;
+        font-weight: 400;
+        padding-top: unset;
+        padding-bottom: 5px;
+    }
+
+    &__price {
+        position: absolute;
+        right: 20%;
+        width: 10%;
+        height: 100%;
+        @extend %flex-center;
+        @extend %flex-column;
+        @extend %flex-end;
+        padding-bottom: 6%;
+        transform: translateX(130%);
+        transition-delay: 0.15s;
+        transition-duration: 0.5s;
+    }
+
+    &__icon__container {
+        @extend %flex-center;
+        color: white;
+        font-size: 22px;
+        width: 20%;
+        height: 100%;
+        background-color: rgba($color: #0D852E, $alpha: 0.3);
+        border-radius: 0 15px 15px 0;
+        transform: translateX(100%);
+        transition-duration: 0.5s;
+    }
+
+    & i {
+        transform: rotateZ(0deg);
+        transition: transform 0.7s;
+    }
+
+    &:hover & {
+        &__body {
+            width: 60%;
+        }
+
+        &__price {
+            transform: translateX(-5%);
+        }
+
+        &__icon__container {
+            transform: translateX(75%);
+
+            & i {
+                transform: rotateZ(360deg);
+            }
+        }
+    }
+
+    animation: loading cubic-bezier(0.38, 0.62, 0.72, 0.99) 0.7s;
+    animation-fill-mode: forwards;
+}
+
+@for $i from 2 through 14 {
+    .card__secondary__container .btn__secondary:nth-child(#{$i}) {
+        animation-delay: $i * 0.2s;
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: translateY(20%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.calltoaction {
+    background-color: $background-main;
+    @extend %padding-inline;
+    padding-bottom: 30px;
+    @extend %flex-center;
+}
+
+.btn__calltoaction--modifier {
+    @extend .btn__calltoaction;
+    width: 60%;
+}

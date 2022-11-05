@@ -1,0 +1,26 @@
+// Project main theme bg colors
+$primary__project__color: #6EA52C;
+$secondary__project__color: #0D852E;
+$tertiary__project__color: #692737;
+
+// Background colors
+$light-gray: #F7F7F7;
+$gray: #EAEAEA;
+$gradient: linear-gradient(0deg, rgba(147, 86, 220, 1) 0%, rgba(233, 109, 218, 1) 50%);
+
+// colors
+$dark-gray: #353535;
+$pink: #F5EDFF;
+
+// Box shadow
+
+$shadow-main: 0px 2px 8px rgba(0, 0, 0, .3);
+$shadow-main--modifier: 0px 6px 8px rgb(0 0 0 / 30%);
+
+// Useful all colors naming
+$background-main: $light-gray;
+$background-location: $gray;
+$background-btn-cta: $gradient;
+$color-icon: $dark-gray;
+$background-footer: $dark-gray;
+$color-icon--modifier: $pink;

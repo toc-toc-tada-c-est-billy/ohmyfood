@@ -1,0 +1,24 @@
+// POSITION ELEMENT
+@mixin absolute-el ($top, $right, $bottom, $left, $x, $y) {
+    content: '';
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    transform: translate($x,$y);    
+}
+
+// Pseudo element
+@mixin pseudo-el($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;    
+}
+
+@mixin padding ($left, $top, $right, $bottom) {
+    padding-left: $left;
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+}
