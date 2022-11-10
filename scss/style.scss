@@ -7,12 +7,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shrikhand:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+html {
+    scroll-behavior: smooth;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+        /* au click du menu : smooth scroll */
+    }
+}
+
 * {
     padding-inline-start: unset;
     text-decoration: none;
     list-style: none;
     font-family: 'Roboto', 'Shrikhand', sans-serif;
     margin: unset;
+}
+
+a {
+    cursor: pointer;
+    z-index: 100;
+    color: inherit;
 }
 
 i {
@@ -92,11 +111,11 @@ p {
 
 // Header
 
-.header {
+.header__primary {
     @extend %flex-center;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1001;
     background-color: white;
     width: 100%;
     height: 60px;
@@ -110,7 +129,7 @@ p {
         height: 60px;
     }
 
-    & .logo {
+    &__logo {
         height: 30px;
     }
 }
@@ -118,6 +137,7 @@ p {
 // Location
 
 .location {
+    position: relative;
     height: 50px;
     width: 100%;
     @extend %flex-center;
@@ -126,9 +146,62 @@ p {
     &__icon {
         margin-right: 15px;
     }
+
+    &__dropdown {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        &__icon {
+            z-index: 1;
+            cursor: pointer;
+            position: absolute;
+            text-align: center;
+            left: 80%;
+            bottom: 30%;
+            width: 20px;
+            height: 20px;
+            box-shadow: $shadow-main;
+            border-radius: 25px;
+            transform: rotateZ(0);
+            transition-duration: 0.4s;
+            font-size: 18px;
+        }
+
+        &__menu {
+            cursor: pointer;
+            position: absolute;
+            @extend %flex-center;
+            gap: 15px;
+            background-color: $background-main;
+            opacity: 0.95;
+            width: 100%;
+            height: 100%;
+            transform: translateY(100%);
+            transition: ease-out 0.4s;
+
+            &__icon {
+                color: blue;
+            }
+        }
+
+        &:hover &__icon {
+            transform: rotateZ(90deg);
+        }
+
+        &:hover &__menu {
+            transform: translateY(0);
+        }
+    }
 }
 
+
+
+// Heading
+
 .heading {
+    z-index: 1;
     background-color: $background-main;
 
     &__container {
@@ -159,16 +232,16 @@ p {
     cursor: pointer;
     box-shadow: $shadow-main;
     width: fit-content;
-    height: 45px;
-    @extend %radius--modifier;
+    border-radius: 50px;
     background: $gradient;
-    color: white;
     padding: 20px;
     margin-top: 20px;
     transition-duration: 0.4s;
+    color: white;
 
     &:hover {
         box-shadow: $shadow-main--modifier;
+        filter: brightness(120%)
     }
 
 }
@@ -200,11 +273,7 @@ p {
     @extend %radius-main;
     box-shadow: $shadow-main;
     font-weight: 600;
-
-    &--modifier {
-        @extend .btn__intro;
-        background-color: #F5EDFF;
-    }
+    transition-duration: 0.4s;
 
     &__nbr {
         z-index: 1;
@@ -219,47 +288,22 @@ p {
         @extend %radius--modifier;
     }
 
-    &__overlay {
-        @extend %flex-center;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        color: black;
-        @extend %radius-main;
-        opacity: 0;
-        transition: ease-in-out 0.3s;
-        &--modifier {
-            @extend .btn__intro__overlay;
-            font-family: 'Shrikhand';
-            font-weight: 100;
-
-            &::after {
-                font-family: "Font Awesome 5 Free";
-                content:'\f358';
-                padding-left: 20px;
-                font-size: 20px;
-                color: #9356DC;
-            }
-        }
-    }
-
-    &:hover &__overlay {
-        opacity: 1;
-    }
-
     &__icon {
         color: #7C7C7C;
         font-size: 16px;
         width: 15%;
         padding-left: 4%;
-
-        &--modifier {
-            @extend .btn__intro__icon;
-            color: #9356DC;
-        }
-
+        transition-duration: 0.4s;
     }
+
+    &:hover {
+        background-color: #F5EDFF;
+    }
+
+    &:hover &__icon {
+        color: #9356DC;
+    }
+
 }
 
 // Card
@@ -288,7 +332,11 @@ p {
     aspect-ratio: 4/3;
     width: 100%;
     overflow: hidden;
-    cursor: pointer;
+    transition-duration: 0.4s;
+
+    &:hover {
+        box-shadow: $shadow-main--modifier;
+    }
 
     &__image__container {
         height: 70%;
@@ -331,12 +379,49 @@ p {
             @extend %padding-inline;
             height: 50%;
         }
+    }
+}
 
-        &__icon {
+.btn__card__like {
+    border: unset;
+    padding: unset;
+    position: relative;
+    width: 20%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
+
+    &__icon {
+        z-index: 1;
+        display: contents;
+        font-size: 30px;
+        opacity: 1;
+        transition: ease-out 0.4s;
+
+        &--modifier {
+            position: absolute;
+            display: flex !important;
             @extend %flex-center;
+            width: 100%;
             height: 100%;
-            width: 20%;
-            font-size: 22px;
+            bottom: 0;
+            font-size: 0;
+            transition: ease-in 0.3s;
+            background: $gradient;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &:hover,
+    &:focus-within {
+
+        .btn__card__like__icon--modifier {
+            font-size: 30px
+        }
+
+        .btn__card__like__icon {
+            opacity: 0;
         }
     }
 }
@@ -376,11 +461,43 @@ p {
             transform: rotate(135deg);
         }
     }
+
+    &__links {
+        color: white;
+    }
 }
 
 // // // PAGES
 
 // Heading
+
+// Header
+
+.header__secondary {
+    @extend .header__primary;
+    @extend %flex-around;
+    gap: 30%;
+
+    &__logo {
+        height: 20px;
+    }
+
+    &__return__button {
+        cursor: pointer;
+        z-index: 1;
+        width: fit-content;
+        height: fit-content;
+        font-size: 24px;
+        padding-inline: 50%;
+        @extend %radius-main;
+        transition-duration: 0.4s;
+
+        &:hover {
+            transform: translateX(-5px);
+        }
+    }
+
+}
 
 .heading__secondary {
     width: 100%;
@@ -414,37 +531,14 @@ p {
     }
 
     &__icon {
-        @extend .card__text__icon;
+        @extend .btn__card__like;
     }
 }
 
 .card__secondary {
     background-color: $background-main;
     @extend %padding-inline;
-
-    & .return__button {
-        position: sticky;
-        @extend %radius-main;
-        @extend %flex-center;
-        z-index: 1000;
-        width: fit-content;
-        height: fit-content;
-        top: 30%;
-        left: 100%;
-        padding: 10px;
-        cursor: pointer;
-        background-color: rgba($color: #6EA52C, $alpha: 0.3);
-
-        & i {
-            padding-right: 5px;
-        }
-
-        & a {
-            font-family: 'Shrikhand';
-            font-style: italic;
-            color: black;
-        }
-    }
+    transform: translateY(-1px);
 
     &__container {
         @extend %flex-center--modifier;
@@ -521,7 +615,6 @@ p {
         @extend %flex-center;
         @extend %flex-column;
         @extend %flex-end;
-        padding-bottom: 6%;
         transform: translateX(130%);
         transition-delay: 0.15s;
         transition-duration: 0.5s;
@@ -542,6 +635,11 @@ p {
     & i {
         transform: rotateZ(0deg);
         transition: transform 0.7s;
+        animation-fill-mode: forwards;
+    }
+
+    &:hover {
+        background-color: white;
     }
 
     &:hover & {
@@ -565,6 +663,7 @@ p {
     animation: loading cubic-bezier(0.38, 0.62, 0.72, 0.99) 0.7s;
     animation-fill-mode: forwards;
 }
+
 
 @for $i from 2 through 14 {
     .card__secondary__container .btn__secondary:nth-child(#{$i}) {
@@ -595,3 +694,111 @@ p {
     @extend .btn__calltoaction;
     width: 60%;
 }
+
+
+
+// MOBILE FIRST RESPONSIVE QUERIES
+
+@media screen and (min-width: 600px) {
+    .intro__container {
+        padding-inline: 10%;
+    }
+
+    .main__card {
+        //background-color: #EAEAEA;
+        position: relative;
+
+        &__heading::after {
+            content: "";
+            position: absolute;
+            display: block;
+            height: 65%;
+            right: 5%;
+            top: 20%;
+            bottom: 0;
+            width: 20px;
+            box-shadow: inset -28px 0 30px -43px #000;
+        }
+
+        &__list {
+            margin-top: 30px;
+            flex-direction: row;
+            overflow-x: scroll;
+            gap: 1%;
+        }
+
+        & .card {
+            margin: 2%;
+            min-width: 250px;
+        }
+    }
+
+    // 1000px
+
+    // Pages
+
+    .heading__secondary__container {
+        max-height: 275px;
+        overflow: hidden;
+    }
+
+    .heading__secondary__title__container {
+        z-index: 1000;
+    }
+
+    @media screen and (min-width: 900px) {
+        .intro {
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            &__container {
+                margin-top: 30px; // 768px
+                flex-flow: row;
+                gap: 5%;
+                padding-inline: unset;
+            }
+
+            // 1000px
+        }
+
+        // Pages
+
+        .heading__secondary__container {
+            max-height: 600px;
+        }
+
+        .heading__secondary__title__container {
+            justify-content: center;
+        }
+
+        .heading__secondary__title {
+            width: 40%;
+            font-size: 22px;
+        }
+
+        .card__secondary {
+            padding-top: 60px;
+            padding-inline: 20%;
+        }
+
+        .btn__secondary__price {
+            padding-bottom: unset
+        }
+
+        .btn__calltoaction--modifier {
+            margin-top: 40px;
+        }
+    }
+}
+
+/*
+@media screen and (min-width: 600px) and (max-width: 899px) {
+    .intro, .main__card {
+        padding-inline: 20%;
+    }
+
+    .main__card__list {
+        padding-inline: 10%;
+        gap: 40px;
+    }
+}*/

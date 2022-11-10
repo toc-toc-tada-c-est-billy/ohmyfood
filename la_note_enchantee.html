@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La palette du goût</title>
+    <title>La note enchantée</title>
     <link rel="stylesheet" href="scss/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/0a494ac0c5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header class="header">
-        <img class="logo" src="images/logo/logo-ohmyfood.svg" alt="logo Ohmyfood">
+    <header class="header__secondary">
+        <a href="index.html">
+            <i class="header__secondary__return__button fa-solid fa-arrow-left"></i>
+        </a>
+        <a href="index.html">
+            <img class="header__secondary__logo" src="images/logo/logo-ohmyfood.svg" alt="logo Ohmyfood">
+        </a>
     </header>
 
     <main>
@@ -22,25 +27,23 @@
                 <img class="heading__secondary__image" src="images/restaurants/la-palette-du-gout.jpg"
                     alt="La palette du goût">
                 <div class="heading__secondary__title__container">
-                    <h1 class="heading__secondary__title">La palette du goût</h1>
-                    <span class="heading__secondary__icon"><i class="fa-regular fa-heart"></i></span>
+                    <h1 class="heading__secondary__title">La note enchantée</h1>
+                    <button class="btn__card__like">
+                        <i class="btn__card__like__icon fa-regular fa-heart"></i>
+                        <i class="btn__card__like__icon--modifier fa-solid fa-heart"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
-
-
         <article class="card__secondary">
-            <section class="card__secondary__container">
-                <div class="return__button">
-                    <i class="fa-solid fa-hand-point-left"></i>
-                    <a href="index.html">Accueil</a>
-                </div>
+            <div class="card__secondary__container">
                 <h2 class="card__secondary__container__title">Entrées</h2>
-                <button class="btn__secondary">
+
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Fricassée d'escargot</h3>
-                        <p class="btn__secondary__text">Au piment d'Espelette</p>
+                        <h3 class="btn__secondary__title">Ravioles de foie gras</h3>
+                        <p class="btn__secondary__text">Accompagnés de leur crème à la truffe</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>25€</p>
@@ -48,11 +51,12 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
-                <button class="btn__secondary">
+                </div>
+
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Foie gras de canard mi-cuit</h3>
-                        <p class="btn__secondary__text">Et ses copeaux de truffe noire</p>
+                        <h3 class="btn__secondary__title">Caviar osciètre </h3>
+                        <p class="btn__secondary__text">Sur blini à la farine de blé noir</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>35€</p>
@@ -60,11 +64,12 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
-                <button class="btn__secondary">
+                </div>
+
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Œuf au plat</h3>
-                        <p class="btn__secondary__text">Assaisonné à la truffe sur lit de caviar</p>
+                        <h3 class="btn__secondary__title">Homard et espuma de potiron</h3>
+                        <p class="btn__secondary__text">Mariné aux zestes d'orange</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>20€</p>
@@ -72,26 +77,12 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
+                </div>
 
-                <h2 class="card__secondary__container__title">Plats</h2>
-                <button class="btn__secondary">
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Filet de boeuf aux herbes</h3>
-                        <p class="btn__secondary__text">Accompagné de sa ribambelle de légumes</p>
-                    </div>
-                    <div class="btn__secondary__price">
-                        <p>40€</p>
-                    </div>
-                    <div class="btn__secondary__icon__container">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-
-                </button>
-                <button class="btn__secondary">
-                    <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Parmentier de queue de boeuf</h3>
-                        <p class="btn__secondary__text">À la truffe noire sur sa purée de panais</p>
+                        <h3 class="btn__secondary__title">Foie gras de canard cuit entier</h3>
+                        <p class="btn__secondary__text">Confiture de figue et pain toasté</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>35€</p>
@@ -99,11 +90,39 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
-                <button class="btn__secondary">
+                </div>
+
+                <h2 class="card__secondary__container__title">Plats</h2>
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Filet de turbot</h3>
-                        <p class="btn__secondary__text">Aux agrumes</p>
+                        <h3 class="btn__secondary__title">Noix de coquilles Saint-Jacques</h3>
+                        <p class="btn__secondary__text">Sur lit de purée de céleri-rave</p>
+                    </div>
+                    <div class="btn__secondary__price">
+                        <p>40€</p>
+                    </div>
+                    <div class="btn__secondary__icon__container">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                </div>
+
+                <div class="btn__secondary">
+                    <div class="btn__secondary__body">
+                        <h3 class="btn__secondary__title">Langoustine poêlée</h3>
+                        <p class="btn__secondary__text">Purée de patate douce</p>
+                    </div>
+                    <div class="btn__secondary__price">
+                        <p>35€</p>
+                    </div>
+                    <div class="btn__secondary__icon__container">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                </div>
+
+                <div class="btn__secondary">
+                    <div class="btn__secondary__body">
+                        <h3 class="btn__secondary__title">Mijoté de queue de boeuf</h3>
+                        <p class="btn__secondary__text">Et riz sauvage aux zestes de citron</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>44€</p>
@@ -111,13 +130,13 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
+                </div>
 
                 <h2 class="card__secondary__container__title">Desserts</h2>
-                <button class="btn__secondary">
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Paris-Brest</h3>
-                        <p class="btn__secondary__text">Revisité</p>
+                        <h3 class="btn__secondary__title">Macaron noisette et chocolat</h3>
+                        <p class="btn__secondary__text">Glace au caramel brun et sel de Guérande</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>18€</p>
@@ -125,11 +144,12 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
-                <button class="btn__secondary">
+                </div>
+
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Macaron au chocolat d'exception </h3>
-                        <p class="btn__secondary__text">Et glace à la vanille de Madagascar</p>
+                        <h3 class="btn__secondary__title">Baba au rhum revisité</h3>
+                        <p class="btn__secondary__text">Avec son coulis de citron</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>22€</p>
@@ -137,11 +157,12 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
-                <button class="btn__secondary">
+                </div>
+
+                <div class="btn__secondary">
                     <div class="btn__secondary__body">
-                        <h3 class="btn__secondary__title">Mousse au chocolat</h3>
-                        <p class="btn__secondary__text">Au piment d'Espelette et à la truffe noire</p>
+                        <h3 class="btn__secondary__title">Tarte au citron meringuée</h3>
+                        <p class="btn__secondary__text">Déstructurée</p>
                     </div>
                     <div class="btn__secondary__price">
                         <p>23€</p>
@@ -149,15 +170,19 @@
                     <div class="btn__secondary__icon__container">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                </button>
-            </section>
+                </div>
+            </div>
+
             <div class="calltoaction">
-                <button class="btn__calltoaction--modifier">Commander</button>
+                <a href="#" class="btn__calltoaction--modifier">Commander</a>
             </div>
         </article>
     </main>
+
     <footer class="footer">
-        <img class="footer__logo" src="images/logo/logo-ohmyfood-white.png" alt="logo Ohmyfood">
+        <a href="index.html">
+            <img class="footer__logo" src="images/logo/logo-ohmyfood-white.png" alt="logo Ohmyfood">
+        </a>
         <div class="footer__icon__container">
             <i class="footer__icon fa-solid fa-utensils"></i>
             <p>Proposer un restaurant</p>
