@@ -10,7 +10,11 @@
 html {
     scroll-behavior: smooth;
     margin: 0 auto;
+}
+
+main {
     max-width: 1400px;
+    margin: auto;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -44,15 +48,15 @@ p {
 
 // PRELOADER
 
-/*
 .preloader {
+    position: relative;
     z-index: 1001;
     position: fixed;
     width: 100%;
     height: 100%;
     background-color: $background-main;
     @extend %flex-center;
-    animation: preloader ease-out forwards 2s;
+    animation: preloader ease-in forwards 2s;
 
     &__element {
         display: block;
@@ -62,9 +66,9 @@ p {
         height: 50px;
         width: 50px;
         margin: -25px 0 0 -25px;
-        border: 5px solid transparent;
-        border-top-color: #000000;
-        border-bottom-color: #000000;
+        border: 3px solid transparent;
+        border-top-color: rgb(255, 140, 140, .4);
+        border-bottom-color: rgb(255, 140, 140, .4);
         border-radius: 50%;
         animation: preloader__element 1s linear infinite;
 
@@ -77,7 +81,7 @@ p {
             left: 5px;
             border: 5px solid transparent;
             border-radius: 50%;
-            background: rgba(110, 165, 44, 0.3);
+            background: $gradient;
         }
     }
 }
@@ -87,14 +91,24 @@ p {
         opacity: 1;
     }
 
-    100% {
+    99% {
         opacity: 0;
+    }
+
+    100% {
+        z-index: -1;
+
     }
 }
 
 @keyframes preloader__element {
     0% {
         transform: rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
     }
 
     50% {
@@ -106,10 +120,7 @@ p {
     }
 }
 
-*/
-// // Heading
-
-// Header
+// Heading
 
 .header__primary {
     @extend %flex-center;
@@ -134,7 +145,7 @@ p {
     }
 }
 
-// Location
+//
 
 .location {
     position: relative;
@@ -196,9 +207,7 @@ p {
     }
 }
 
-
-
-// Heading
+//
 
 .heading {
     z-index: 1;
@@ -234,7 +243,8 @@ p {
     width: fit-content;
     border-radius: 50px;
     background: $gradient;
-    padding: 20px;
+    height: 45px;
+    padding-inline: 20px;
     margin-top: 20px;
     transition-duration: 0.4s;
     color: white;
@@ -246,13 +256,12 @@ p {
 
 }
 
-// // Main
-
-// Intro
+// Main
 
 .intro {
     @extend %padding-inline;
     @extend %padding-vertical;
+    background-color: white;
 
     &__container {
         margin-top: 20px;
@@ -332,10 +341,11 @@ p {
     aspect-ratio: 4/3;
     width: 100%;
     overflow: hidden;
-    transition-duration: 0.4s;
+    transition-duration: 0.2s;
 
     &:hover {
         box-shadow: $shadow-main--modifier;
+        animation: card__wiggle ease-in-out 0.3s;
     }
 
     &__image__container {
@@ -382,6 +392,29 @@ p {
     }
 }
 
+@keyframes card__wiggle {
+    0% {
+        transform: translateX(-2px);
+    }
+
+    25% {
+        scale: 1.05;
+    }
+
+    50% {
+        transform: rotate(-2deg);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: rotate(0deg);
+        scale: 1;
+    }
+}
+
 .btn__card__like {
     border: unset;
     padding: unset;
@@ -396,7 +429,7 @@ p {
         display: contents;
         font-size: 30px;
         opacity: 1;
-        transition: ease-out 0.4s;
+        transition: ease-out 0.6s;
 
         &--modifier {
             position: absolute;
@@ -406,7 +439,7 @@ p {
             height: 100%;
             bottom: 0;
             font-size: 0;
-            transition: ease-in 0.3s;
+            transition: ease-in 0.4s;
             background: $gradient;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -417,11 +450,44 @@ p {
     &:focus-within {
 
         .btn__card__like__icon--modifier {
-            font-size: 30px
+            font-size: 30px;
+            animation: wiggle 0.4s 0.3s;
         }
 
         .btn__card__like__icon {
             opacity: 0;
+        }
+    }
+
+    @keyframes wiggle {
+        0% {
+            transform: rotate(10deg);
+        }
+
+        15% {
+            transform: rotate(-10deg);
+        }
+        30% {
+            transform: rotate(10deg);
+        }
+
+        45% {
+            transform: rotate(-10deg);
+        }
+
+        60% {
+            transform: rotate(10deg);
+        }
+
+        75% {
+            transform: rotate(-5deg);
+        }
+
+        90% {
+            transform: rotate(5deg);
+        }
+        100% {
+            transform: rotate(0deg);
         }
     }
 }
@@ -539,6 +605,7 @@ p {
     background-color: $background-main;
     @extend %padding-inline;
     transform: translateY(-1px);
+    padding-top: 20px;
 
     &__container {
         @extend %flex-center--modifier;
@@ -570,91 +637,104 @@ p {
 
 .btn__secondary {
     cursor: pointer;
-    @extend .btn__intro;
-    padding: unset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     background-color: white;
     opacity: 0;
     overflow: hidden;
+    width: 100%;
+    height: 60px;
+    @extend %radius-main;
+    border: none;
+    box-shadow: $shadow-main;
+    gap: 3%;
+    transition-duration: 0.4s;
 
-    &__body {
-        display: flex;
-        @extend %flex-column;
-        padding-left: 5%;
-        width: 80%;
-        height: 100%;
+    & i:first-child,
+    & i:nth-child(2) {
+        white-space: nowrap;
         overflow: hidden;
+    }
+    &__title,
+    &__text {
+        height: 50%;
+        display: table-cell; // I assume the i in the button needs table cell for Ellipsis
+        padding-top: 1%;
+        transition-duration: 0.6s;
+        width: 70%;
+        text-align: initial;
+        padding-left: 5%;
+        text-overflow: ellipsis;
         transition-duration: 0.6s;
     }
 
-    & p,
-    & h3 {
-        text-overflow: ellipsis;
-    }
-
     &__title {
-        text-align: left;
+        font-size: 18px;
         font-weight: 600;
-        height: 50%;
-        overflow: hidden;
-        white-space: nowrap;
-        padding-top: 8px;
     }
 
     &__text {
-        @extend .btn__secondary__title;
+        font-size: 16px;
         font-weight: 400;
-        padding-top: unset;
-        padding-bottom: 5px;
     }
 
     &__price {
         position: absolute;
-        right: 20%;
-        width: 10%;
-        height: 100%;
-        @extend %flex-center;
-        @extend %flex-column;
-        @extend %flex-end;
-        transform: translateX(130%);
+        right: 10%;
+        bottom: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        transform: translateX(0);
         transition-delay: 0.15s;
         transition-duration: 0.5s;
+        z-index: 1;
     }
 
-    &__icon__container {
-        @extend %flex-center;
+    &__icon {
+        display: flex !important; // Necessary :/
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        padding: unset;
+        right: 0;
+        bottom: 0;
         color: white;
         font-size: 22px;
         width: 20%;
         height: 100%;
-        background-color: rgba($color: #0D852E, $alpha: 0.3);
+        background-color: #99E2D0;
         border-radius: 0 15px 15px 0;
         transform: translateX(100%);
         transition-duration: 0.5s;
-    }
-
-    & i {
-        transform: rotateZ(0deg);
-        transition: transform 0.7s;
-        animation-fill-mode: forwards;
+        
+        &::before {
+            transform: rotateZ(0deg);
+            transition: transform 0.7s;
+            animation-fill-mode: forwards;
+        }
     }
 
     &:hover {
-        background-color: white;
+        box-shadow: $shadow-main--modifier;
     }
 
-    &:hover & {
-        &__body {
+    &:hover &,
+    &:focus-within & {
+
+        &__title,
+        &__text {
             width: 60%;
         }
 
         &__price {
-            transform: translateX(-5%);
+            right: 22%;
         }
 
-        &__icon__container {
-            transform: translateX(75%);
+        &__icon {
+            transform: translateX(0);
 
-            & i {
+            &::before {
                 transform: rotateZ(360deg);
             }
         }
@@ -763,17 +843,27 @@ p {
 
         // Pages
 
-        .heading__secondary__container {
-            max-height: 600px;
-        }
+        .heading__secondary {
+            &__container {
+                max-height: 600px;
+            }
 
-        .heading__secondary__title__container {
-            justify-content: center;
-        }
+            &__title__container {
+                justify-content: center;
+            }
 
-        .heading__secondary__title {
-            width: 40%;
-            font-size: 22px;
+            &__title {
+                width: 50%;
+                font-size: 32px;
+            }
+
+            & .btn__card__like {
+                width: 10%;
+
+                &__icon {
+                    font-size: 32px;
+                }
+            }
         }
 
         .card__secondary {
@@ -781,24 +871,8 @@ p {
             padding-inline: 20%;
         }
 
-        .btn__secondary__price {
-            padding-bottom: unset
-        }
-
         .btn__calltoaction--modifier {
             margin-top: 40px;
         }
     }
 }
-
-/*
-@media screen and (min-width: 600px) and (max-width: 899px) {
-    .intro, .main__card {
-        padding-inline: 20%;
-    }
-
-    .main__card__list {
-        padding-inline: 10%;
-        gap: 40px;
-    }
-}*/
