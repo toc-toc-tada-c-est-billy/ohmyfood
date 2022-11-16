@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oh my food</title>
-    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/0a494ac0c5.js" crossorigin="anonymous"></script>
 </head>
@@ -16,132 +16,133 @@
         <div class="preloader__element"></div>
     </div>
 
-    <header class="header__primary">
+    <header class="header--primary">
         <a href="index.html">
-            <img class="header__primary__logo" src="images/logo/logo-ohmyfood.svg" alt="logo Ohmyfood">
+            <img class="header--primary__logo" src="images/logo/logo-ohmyfood.svg" alt="logo Ohmyfood">
         </a>
     </header>
-    
+
     <main>
         <div class="location">
-            <div class="location__dropdown">
-                <i class="location__dropdown__icon fa-solid fa-sort-down"></i>
-                <div class="location__dropdown__menu">
-                    <i class="location__dropdown__menu__icon fa-solid fa-location-crosshairs"></i>
+            <i class="location__icon fa-solid fa-location-dot"></i>
+            <p>Paris, Belleville</p>
+
+            <div class="location-dropdown">
+                <i class="location-dropdown__icon fa-solid fa-sort-down"></i>
+                <div class="location-dropdown-menu">
+                    <i class="location-dropdown-menu__icon fa-solid fa-location-crosshairs"></i>
                     <p>Activer la localisation</p>
                 </div>
             </div>
-            <i class="location__icon fa-solid fa-location-dot"></i>
-            <p>Paris, Belleville</p>
         </div>
 
-        <section class="heading">
-            <div class="heading__container">
-                <h1 class="heading__title">Réserver le menu qui vous convient</h1>
-                <p class="heading__text">Découvrez des restaurants d'exception, sélectionnés par nos soins</p>
-                <a class="btn__calltoaction" href="#card">Explorer nos restaurants</a>
+        <section class="heading--primary">
+            <div class="heading--primary-container">
+                <h1 class="heading--primary-container__h1">Réserver le menu qui vous convient</h1>
+                <p class="heading--primary-container__p">Découvrez des restaurants d'exception, sélectionnés par nos soins</p>
+                <a class="button button__heading" href="#card">Explorer nos restaurants</a>
             </div>
         </section>
 
         <section class="intro">
             <h2>Fonctionnement</h2>
-            <div class="intro__container">
-                <button class="btn__intro">
-                    <i class="btn__intro__nbr">1</i>
-                    <i class="btn__intro__icon fa-solid fa-mobile-screen-button"></i>
+            <div class="intro-container">
+                <button class="button button__intro">
+                    <i class="button__intro__nbr">1</i>
+                    <i class="button__intro__icon fa-solid fa-mobile-screen-button"></i>
                     Choisissez un restaurant
                 </button>
-                <button class="btn__intro">
-                    <i class="btn__intro__nbr">2</i>
-                    <i class="btn__intro__icon fa-solid fa-list-ul"></i>
+                <button class="button button__intro">
+                    <i class="button__intro__nbr">2</i>
+                    <i class="button__intro__icon fa-solid fa-list-ul"></i>
                     Composez votre menu
                 </button>
-                <button class="btn__intro">
-                    <i class="btn__intro__nbr">3</i>
-                    <i class="btn__intro__icon fa-solid fa-store"></i>
+                <button class="button button__intro">
+                    <i class="button__intro__nbr">3</i>
+                    <i class="button__intro__icon fa-solid fa-store"></i>
                     Dégustez au restaurant
                 </button>
             </div>
         </section>
 
-        <article id="card" class="main__card">
-            <div class="main__card__heading">
+        <article id="card" class="main-card">
+            <div class="main-card-heading">
                 <h2>Restaurants</h2>
-                <div class="main__card__list">
+                <div class="main-card-list">
                     <div class="card">
                         <a href="la_palette_du_gout.html">
-                            <div class="card__image__container">
-                                <img class="card__image" src="images/restaurants/la-palette-du-gout.jpg"
+                            <div class="card-image-container">
+                                <img class="card-image-container__image" src="images/restaurants/la-palette-du-gout.jpg"
                                     alt="restaurant La palette du goût">
-                                <p class="card__image__absolute-el">Nouveau</p>
+                                <p class="card-image-container__absolute-el">Nouveau</p>
                             </div>
                         </a>
-                        <div class="card__text__container">
-                            <div class="card__text">
-                                <h3 class="card__text__title">La palette du goût</h3>
-                                <p class="card__text__body">Ménilmontant</p>
+                        <div class="card-body">
+                            <div class="card-body-container">
+                                <h3 class="card-body-container__h3">La palette du goût</h3>
+                                <p class="card-body-container__p">Ménilmontant</p>
                             </div>
-                            <button class="btn__card__like">
-                                <i class="btn__card__like__icon fa-regular fa-heart"></i>
-                                <i class="btn__card__like__icon--modifier fa-solid fa-heart"></i>
+                            <button class="button__card__like">
+                                <i class="button__card__like__icon fa-regular fa-heart"></i>
+                                <i class="button__card__like__icon--modifier fa-solid fa-heart"></i>
                             </button>
                         </div>
                     </div>
 
                     <div class="card">
                         <a href="la_note_enchantee.html">
-                            <div class="card__image__container">
-                                <img class="card__image" src="images/restaurants/la-note-enchantee.jpg"
+                            <div class="card-image-container">
+                                <img class="card-image-container__image" src="images/restaurants/la-note-enchantee.jpg"
                                     alt="restaurant La palette du goût">
-                                <p class="card__image__absolute-el">Nouveau</p>
+                                <p class="card-image-container__absolute-el">Nouveau</p>
                             </div>
                         </a>
-                        <div class="card__text__container">
-                            <div class="card__text">
-                                <h3 class="card__text__title">La note enchantée</h3>
-                                <p class="card__text__body">Charonne</p>
+                        <div class="card-body">
+                            <div class="card-body-container">
+                                <h3 class="card-body-container__h3">La note enchantée</h3>
+                                <p class="card-body-container__p">Charonne</p>
                             </div>
-                            <button class="btn__card__like">
-                                <i class="btn__card__like__icon fa-regular fa-heart"></i>
-                                <i class="btn__card__like__icon--modifier fa-solid fa-heart"></i>
+                            <button class="button__card__like">
+                                <i class="button__card__like__icon fa-regular fa-heart"></i>
+                                <i class="button__card__like__icon--modifier fa-solid fa-heart"></i>
                             </button>
                         </div>
                     </div>
 
                     <div class="card">
                         <a href="a_la_francaise.html">
-                            <div class="card__image__container">
-                                <img class="card__image" src="images/restaurants/a-la-francaise.jpg"
+                            <div class="card-image-container">
+                                <img class="card-image-container__image" src="images/restaurants/a-la-francaise.jpg"
                                     alt="restaurant La palette du goût">
                             </div>
                         </a>
-                        <div class="card__text__container">
-                            <div class="card__text">
-                                <h3 class="card__text__title">À la française</h3>
-                                <p class="card__text__body">Cité Rouge</p>
+                        <div class="card-body">
+                            <div class="card-body-container">
+                                <h3 class="card-body-container__h3">À la française</h3>
+                                <p class="card-body-container__p">Cité Rouge</p>
                             </div>
-                            <button class="btn__card__like">
-                                <i class="btn__card__like__icon fa-regular fa-heart"></i>
-                                <i class="btn__card__like__icon--modifier fa-solid fa-heart"></i>
+                            <button class="button__card__like">
+                                <i class="button__card__like__icon fa-regular fa-heart"></i>
+                                <i class="button__card__like__icon--modifier fa-solid fa-heart"></i>
                             </button>
                         </div>
                     </div>
 
                     <div class="card">
                         <a href="le_delice_des_sens.html">
-                            <div class="card__image__container">
-                                <img class="card__image" src="images/restaurants/le-delice-des-sens.jpg"
+                            <div class="card-image-container">
+                                <img class="card-image-container__image" src="images/restaurants/le-delice-des-sens.jpg"
                                     alt="restaurant La palette du goût">
                             </div>
                         </a>
-                        <div class="card__text__container">
-                            <div class="card__text">
-                                <h3 class="card__text__title">Le délice des sens</h3>
-                                <p class="card__text__body">Folie-Méricourt</p>
+                        <div class="card-body">
+                            <div class="card-body-container">
+                                <h3 class="card-body-container__h3">Le délice des sens</h3>
+                                <p class="card-body-container__p">Folie-Méricourt</p>
                             </div>
-                            <button class="btn__card__like">
-                                <i class="btn__card__like__icon fa-regular fa-heart"></i>
-                                <i class="btn__card__like__icon--modifier fa-solid fa-heart"></i>
+                            <button class="button__card__like">
+                                <i class="button__card__like__icon fa-regular fa-heart"></i>
+                                <i class="button__card__like__icon--modifier fa-solid fa-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -154,12 +155,12 @@
         <a href="index.html">
             <img class="footer__logo" src="images/logo/logo-ohmyfood-white.png" alt="logo Ohmyfood">
         </a>
-        <div class="footer__icon__container">
-            <i class="footer__icon fa-solid fa-utensils"></i>
+        <div class="footer-container">
+            <i class="footer-container__icon fa-solid fa-utensils"></i>
             <a class="footer__links" href="#">Proposer un restaurant</a>
         </div>
-        <div class="footer__icon__container">
-            <i class="footer__icon--modifier fa-solid fa-handshake-simple"></i>
+        <div class="footer-container">
+            <i class="footer-container__icon--modifier fa-solid fa-handshake-simple"></i>
             <a class="footer__links" href="#">Devenir partenaire</a>
         </div>
         <a class="footer__links" href="#">Mentions légales</a>

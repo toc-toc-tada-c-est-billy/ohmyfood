@@ -2,6 +2,9 @@
 @import './_mixins';
 @import './_placeholders';
 
+// Mixins not used in this document, some examples remains and could be used for further applications
+
+
 // Utilities
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -15,12 +18,14 @@ html {
 main {
     max-width: 1400px;
     margin: auto;
+    // desktop view max size
+
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
-        /* au click du menu : smooth scroll */
+        // smooth scroll using in-pages links
     }
 }
 
@@ -34,7 +39,7 @@ main {
 
 a {
     cursor: pointer;
-    z-index: 100;
+    z-index: 100; // necessary for card links for example
     color: inherit;
 }
 
@@ -49,14 +54,14 @@ p {
 // PRELOADER
 
 .preloader {
-    position: relative;
-    z-index: 1001;
     position: fixed;
+    z-index: 1001;
     width: 100%;
     height: 100%;
-    background-color: $background-main;
+    background-color: $background-main; // see '_variables.scss' for theme colors and box shadow
     @extend %flex-center;
     animation: preloader ease-in forwards 2s;
+    // background
 
     &__element {
         display: block;
@@ -67,10 +72,11 @@ p {
         width: 50px;
         margin: -25px 0 0 -25px;
         border: 3px solid transparent;
-        border-top-color: rgb(255, 140, 140, .4);
-        border-bottom-color: rgb(255, 140, 140, .4);
+        border-top-color: $pink;
+        border-bottom-color: $purple;
         border-radius: 50%;
         animation: preloader__element 1s linear infinite;
+        // borders
 
         &:after {
             content: "";
@@ -82,12 +88,13 @@ p {
             border: 5px solid transparent;
             border-radius: 50%;
             background: $gradient;
+            // disc
         }
     }
 }
 
 @keyframes preloader {
-    0% {
+    25% {
         opacity: 1;
     }
 
@@ -97,8 +104,9 @@ p {
 
     100% {
         z-index: -1;
-
     }
+
+    // backgound
 }
 
 @keyframes preloader__element {
@@ -118,18 +126,24 @@ p {
     100% {
         transform: rotate(360deg);
     }
+
+    // element
 }
 
 // Heading
 
-.header__primary {
-    @extend %flex-center;
+.header--primary {
+    @extend %flex-center; // see '_placeholders.scss' --> display flex + align center + justify center
     position: sticky;
     top: 0;
     z-index: 1001;
     background-color: white;
     width: 100%;
     height: 60px;
+
+    & a {
+        display: flex;
+    }
 
     &::after {
         position: absolute;
@@ -145,10 +159,11 @@ p {
     }
 }
 
-//
+// Main
 
 .location {
     position: relative;
+    // absolute elements easily placed after a relative parent
     height: 50px;
     width: 100%;
     @extend %flex-center;
@@ -158,7 +173,7 @@ p {
         margin-right: 15px;
     }
 
-    &__dropdown {
+    &-dropdown {
         overflow: hidden;
         position: absolute;
         width: 100%;
@@ -180,7 +195,7 @@ p {
             font-size: 18px;
         }
 
-        &__menu {
+        &-menu {
             cursor: pointer;
             position: absolute;
             @extend %flex-center;
@@ -197,99 +212,111 @@ p {
             }
         }
 
-        &:hover &__icon {
-            transform: rotateZ(90deg);
-        }
+        &:hover & {
 
-        &:hover &__menu {
-            transform: translateY(0);
+            // this kind of code will appear further in this file
+            // providing the possibility to nest all :hover properties
+            &__icon {
+                transform: rotateZ(90deg);
+            }
+
+            &-menu {
+                transform: translateY(0);
+            }
         }
     }
 }
 
-//
+// heading main part
 
-.heading {
+.heading--primary {
     z-index: 1;
     background-color: $background-main;
 
-    &__container {
+    &-container {
         @extend %flex-center;
-        @extend %flex-column;
+        flex-direction: column;
         @extend %padding-inline;
         @extend %padding-vertical;
-    }
 
-    &__title {
-        @extend %text-center;
-        font-size: 22px;
-        font-weight: 900;
-        padding-inline: 30px;
-    }
+        &__h1 {
+            @extend %text-center;
+            font-size: 22px;
+            font-weight: 900;
+            padding-inline: 30px;
+        }
 
-    &__text {
-        @extend %text-center;
-        margin-top: 10px;
+        &__p {
+            @extend %text-center;
+            margin-top: 10px;
+        }
     }
 }
 
-.btn__calltoaction {
-    position: relative;
-    overflow: hidden;
-    border: none;
-    @extend %flex-center;
+// heading button
+
+.button {
     cursor: pointer;
+    position: relative;
+    border: none;
     box-shadow: $shadow-main;
-    width: fit-content;
-    border-radius: 50px;
-    background: $gradient;
-    height: 45px;
-    padding-inline: 20px;
-    margin-top: 20px;
-    transition-duration: 0.4s;
-    color: white;
+    transition: ease-out .2s;
 
     &:hover {
         box-shadow: $shadow-main--modifier;
-        filter: brightness(120%)
     }
 
+    // button are seperated for readability but most of the time will use this class
+
+    &__heading {
+        overflow: hidden;
+        @extend %flex-center;
+        width: fit-content;
+        border-radius: 50px;
+        background: $gradient;
+        height: 45px;
+        padding-inline: 20px;
+        margin-top: 30px;
+        color: white;
+
+        &:hover {
+            filter: brightness(120%);
+        }
+    }
 }
 
-// Main
+// intro "Fonctionnement" container
 
 .intro {
     @extend %padding-inline;
     @extend %padding-vertical;
     background-color: white;
 
-    &__container {
+    &-container {
+        @extend %padding-inline;
         margin-top: 20px;
-        display: flex;
         @extend %flex-column;
         @extend %gap;
     }
 }
 
-.btn__intro {
-    position: relative;
+// intro button
+
+.button__intro {
+    cursor: default;
     @extend %flex-center--modifier;
     width: 100%;
     height: 60px;
     background-color: $background-main;
-    border: none;
-    cursor: default;
     @extend %radius-main;
-    box-shadow: $shadow-main;
     font-weight: 600;
-    transition-duration: 0.4s;
 
     &__nbr {
         z-index: 1;
         position: absolute;
         @extend %flex-center;
         left: -3%;
-        background-color: #9356DC;
+        background-color: $purple;
         color: white;
         width: 25px;
         height: 25px;
@@ -306,34 +333,35 @@ p {
     }
 
     &:hover {
-        background-color: #F5EDFF;
+        background-color: $salmon;
     }
 
     &:hover &__icon {
-        color: #9356DC;
+        color: $purple;
     }
 
 }
 
-// Card
+// card container
 
-.main__card {
+.main-card {
     background-color: $background-main;
     padding-bottom: 40px;
 
-    &__heading {
+    &-heading {
         @extend %padding-inline;
         @extend %padding-vertical;
     }
 
-    &__list {
+    &-list {
         @extend %flex-center--modifier;
-        @extend %flex-column;
+        flex-direction: column;
         margin-top: 20px;
-        @extend %padding-inline;
         @extend %gap;
     }
 }
+
+// card element
 
 .card {
     @extend %radius-main;
@@ -345,19 +373,21 @@ p {
 
     &:hover {
         box-shadow: $shadow-main--modifier;
-        animation: card__wiggle ease-in-out 0.3s;
+        animation: card__wiggle ease-out 0.4s;
+        // shake animation called card__wiggle
+        // keyframes of animations coded after element properties
     }
 
-    &__image__container {
+    &-image-container {
         height: 70%;
         position: relative;
-        // .card__image__absolute-el --> absolutely relative
-    }
 
-    &__image {
-        width: 100%;
+        &__image {
+            width: 100%;
+        }
 
         &__absolute-el {
+            // "Nouveau"
             @extend %flex-center;
             position: absolute;
             padding: 2%;
@@ -365,29 +395,30 @@ p {
             font-weight: 700;
             top: 5%;
             right: 5%;
-            background-color: #99E2D0;
+            background-color: $light-green;
             color: rgba(0, 0, 0, .4);
             border-radius: 2px;
         }
     }
 
-    &__text__container {
+    &-body {
         @extend %flex-center--modifier;
         position: relative;
         background-color: white;
         height: 30%;
-    }
 
-    &__text {
-        width: 80%;
-        height: 100%;
+        &-container {
+            @extend %flex-column;
+            height: 100%;
+            width: 80%;
 
-        &__title,
-        &__body {
-            @extend %flex-center--modifier;
-            @extend %flex-start;
-            @extend %padding-inline;
-            height: 50%;
+            &__h3,
+            &__p {
+                @extend %flex-center--modifier;
+                @extend %flex-start;
+                @extend %padding-inline;
+                height: 100%;
+            }
         }
     }
 }
@@ -415,7 +446,9 @@ p {
     }
 }
 
-.btn__card__like {
+// card button "like"
+
+.button__card__like {
     border: unset;
     padding: unset;
     position: relative;
@@ -443,64 +476,70 @@ p {
             background: $gradient;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            scale: 1;
+            transition-duration: 0.4s;
         }
     }
 
-    &:hover,
-    &:focus-within {
+    &:hover {
 
-        .btn__card__like__icon--modifier {
+        .button__card__like__icon--modifier {
             font-size: 30px;
-            animation: wiggle 0.4s 0.3s;
+            animation: wiggle 0.3s 0.35s;
+            // shake animation called wiggle
         }
 
-        .btn__card__like__icon {
+        .button__card__like__icon {
             opacity: 0;
         }
     }
 
-    @keyframes wiggle {
-        0% {
-            transform: rotate(10deg);
-        }
-
-        15% {
-            transform: rotate(-10deg);
-        }
-        30% {
-            transform: rotate(10deg);
-        }
-
-        45% {
-            transform: rotate(-10deg);
-        }
-
-        60% {
-            transform: rotate(10deg);
-        }
-
-        75% {
-            transform: rotate(-5deg);
-        }
-
-        90% {
-            transform: rotate(5deg);
-        }
-        100% {
-            transform: rotate(0deg);
-        }
+    &:active &__icon--modifier {
+        scale: 1.3;
     }
 }
 
-// // Footer
+// shake animation keyframes
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    15% {
+        transform: rotate(-10deg);
+    }
+
+    30% {
+        transform: rotate(10deg);
+    }
+
+    45% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    75% {
+        transform: rotate(-5deg);
+    }
+
+    90% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 .footer {
     @extend %flex-center--modifier;
     @extend %flex-baseline;
-    @extend %flex-column;
-    @extend %flex-start;
-    @extend %padding-inline;
-    padding-inline: 10%; // yes
+    flex-direction: column;
+    padding-inline: 10%;
     @extend %padding-vertical;
     background-color: $background-footer;
     color: white;
@@ -511,20 +550,20 @@ p {
         padding-bottom: 15px;
     }
 
-    &__icon__container {
+    &-container {
         @extend %flex-center--modifier;
         color: white;
-    }
 
-    &__icon {
-        @extend %text-center;
-        margin-right: 5px;
-        width: 20px;
-        font-size: 14px;
+        &__icon {
+            @extend %text-center;
+            margin-right: 5px;
+            width: 20px;
+            font-size: 14px;
 
-        &--modifier {
-            @extend .footer__icon;
-            transform: rotate(135deg);
+            &--modifier {
+                @extend .footer-container__icon;
+                transform: rotate(135deg);
+            }
         }
     }
 
@@ -533,29 +572,24 @@ p {
     }
 }
 
-// // // PAGES
+// other pages
 
-// Heading
+// header
 
-// Header
-
-.header__secondary {
-    @extend .header__primary;
-    @extend %flex-around;
-    gap: 30%;
+.header--secondary {
+    @extend .header--primary;
 
     &__logo {
-        height: 20px;
+        @extend .header--primary__logo;
     }
 
-    &__return__button {
+    &__return-button {
         cursor: pointer;
+        position: absolute;
+        left: 5%;
+        top: 30%;
         z-index: 1;
-        width: fit-content;
-        height: fit-content;
         font-size: 24px;
-        padding-inline: 50%;
-        @extend %radius-main;
         transition-duration: 0.4s;
 
         &:hover {
@@ -565,55 +599,61 @@ p {
 
 }
 
-.heading__secondary {
+.heading--secondary {
     width: 100%;
 
-    &__container {
+    &-container {
         @extend %flex-center;
-        @extend %flex-column;
+        flex-direction: column;
         position: relative;
-    }
 
-    &__image {
-        width: 100%;
-    }
+        &__image {
+            width: 100%;
+        }
 
-    &__title__container {
-        @extend %flex-center;
-        @extend %flex-start;
-        position: absolute;
-        bottom: -2px;
-        width: 90%;
-        background-color: $background-main;
-        @extend %padding-inline;
-        border-radius: 25px 25px 0 0;
-        padding-top: 30px;
-    }
+        &-body {
+            @extend %flex-center;
+            @extend %flex-start;
+            position: absolute;
+            bottom: -2px;
+            width: 90%;
+            background-color: $background-main;
+            @extend %padding-inline;
+            border-radius: 50px 50px 0 0;
+            padding-top: 30px;
 
-    &__title {
-        width: 80%;
-        font-family: 'Shrikhand';
-        font-style: italic;
+            &__h1 {
+                width: 80%;
+                font-family: 'Shrikhand';
+                font-style: italic;
+            }
+
+            & .button__card__like:active .button__card__like__icon--modifier {
+                scale: 1;
+            }
+        }
     }
 
     &__icon {
-        @extend .btn__card__like;
+        @extend .button__card__like;
     }
 }
 
-.card__secondary {
+// container card menu
+
+.menu-card {
     background-color: $background-main;
     @extend %padding-inline;
     transform: translateY(-1px);
     padding-top: 20px;
 
-    &__container {
+    &-list {
         @extend %flex-center--modifier;
-        @extend %flex-column;
+        flex-direction: column;
         align-items: flex-start;
         @extend %gap;
 
-        &__title {
+        &__h2 {
             position: relative;
             font-weight: 300;
             font-variant: all-small-caps;
@@ -626,62 +666,59 @@ p {
                 bottom: 0;
                 transform: translateY(6px);
                 left: 0;
-                background-color: $secondary__project__color;
-                opacity: 0.3;
+                background-color: $light-green;
             }
         }
 
     }
 }
 
+// menu elements
 
-.btn__secondary {
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+.button__menu {
+    @extend %flex-column;
     background-color: white;
     opacity: 0;
     overflow: hidden;
     width: 100%;
     height: 60px;
     @extend %radius-main;
-    border: none;
-    box-shadow: $shadow-main;
     gap: 3%;
     transition-duration: 0.4s;
 
-    & i:first-child,
-    & i:nth-child(2) {
+    & h3,
+    & p {
         white-space: nowrap;
         overflow: hidden;
+        /* Text Ellispsis properties set directly (used as parents I guess) on html elements in order to work */
     }
-    &__title,
-    &__text {
+
+    &__h3,
+    &__p {
         height: 50%;
-        display: table-cell; // I assume the i in the button needs table cell for Ellipsis
         padding-top: 1%;
         transition-duration: 0.6s;
         width: 70%;
         text-align: initial;
         padding-left: 5%;
-        text-overflow: ellipsis;
+        text-overflow: ellipsis; // '...'
         transition-duration: 0.6s;
+        transition-delay: 0.25s;
     }
 
-    &__title {
+    &__h3 {
         font-size: 18px;
         font-weight: 600;
     }
 
-    &__text {
+    &__p {
         font-size: 16px;
         font-weight: 400;
     }
 
     &__price {
         position: absolute;
-        right: 10%;
+        right: 6%;
         bottom: 6px;
         font-size: 16px;
         font-weight: 600;
@@ -692,7 +729,9 @@ p {
     }
 
     &__icon {
-        display: flex !important; // Necessary :/
+        // used as a container
+        display: flex !important;
+        /* Necessary */
         align-items: center;
         justify-content: center;
         position: absolute;
@@ -701,14 +740,15 @@ p {
         bottom: 0;
         color: white;
         font-size: 22px;
-        width: 20%;
+        width: 15%;
         height: 100%;
-        background-color: #99E2D0;
+        background-color: $light-green;
         border-radius: 0 15px 15px 0;
         transform: translateX(100%);
         transition-duration: 0.5s;
-        
+
         &::before {
+            // target the icon
             transform: rotateZ(0deg);
             transition: transform 0.7s;
             animation-fill-mode: forwards;
@@ -719,16 +759,15 @@ p {
         box-shadow: $shadow-main--modifier;
     }
 
-    &:hover &,
-    &:focus-within & {
+    &:hover & {
 
-        &__title,
-        &__text {
+        &__h3,
+        &__p {
             width: 60%;
         }
 
         &__price {
-            right: 22%;
+            right: 18%;
         }
 
         &__icon {
@@ -740,21 +779,30 @@ p {
         }
     }
 
-    animation: loading cubic-bezier(0.38, 0.62, 0.72, 0.99) 0.7s;
-    animation-fill-mode: forwards;
+    // displaying menu when page load
+    animation: loading cubic-bezier(0.38, 0.62, 0.72, 0.99) forwards 0.5s;
 }
 
 
 @for $i from 2 through 14 {
-    .card__secondary__container .btn__secondary:nth-child(#{$i}) {
+    .menu-card-list .button__menu:nth-child(#{$i}) {
         animation-delay: $i * 0.2s;
     }
+
+    // adding delay after each element display
 }
 
 @keyframes loading {
     0% {
-        transform: translateY(20%);
+        transform: translateY(30%);
         opacity: 0;
+    }
+    30% {
+        opacity: .3;
+    }
+
+    65% {
+        opacity: .7;
     }
 
     100% {
@@ -763,6 +811,8 @@ p {
     }
 }
 
+// Order button "commander" container
+
 .calltoaction {
     background-color: $background-main;
     @extend %padding-inline;
@@ -770,25 +820,28 @@ p {
     @extend %flex-center;
 }
 
-.btn__calltoaction--modifier {
-    @extend .btn__calltoaction;
+.button__calltoaction {
+    @extend .button__heading;
     width: 60%;
 }
 
-
-
 // MOBILE FIRST RESPONSIVE QUERIES
 
+// singular queries for this project design
+
 @media screen and (min-width: 600px) {
-    .intro__container {
+
+    // index.html
+
+    .intro-container {
         padding-inline: 10%;
     }
 
-    .main__card {
+    .main-card {
         //background-color: #EAEAEA;
         position: relative;
 
-        &__heading::after {
+        &-heading::after {
             content: "";
             position: absolute;
             display: block;
@@ -800,64 +853,61 @@ p {
             box-shadow: inset -28px 0 30px -43px #000;
         }
 
-        &__list {
+        &-list {
             margin-top: 30px;
             flex-direction: row;
             overflow-x: scroll;
             gap: 1%;
         }
-
-        & .card {
-            margin: 2%;
-            min-width: 250px;
-        }
     }
 
-    // 1000px
+    .card {
+        margin: 2%;
+        min-width: 250px;
+    }
 
-    // Pages
+    // other pages
 
-    .heading__secondary__container {
+    .heading--secondary-container {
         max-height: 275px;
         overflow: hidden;
     }
 
-    .heading__secondary__title__container {
+    .heading--secondary-container-body {
         z-index: 1000;
     }
+}
 
-    @media screen and (min-width: 900px) {
-        .intro {
-            padding-top: 50px;
-            padding-bottom: 50px;
+@media screen and (min-width: 900px) {
 
-            &__container {
-                margin-top: 30px; // 768px
-                flex-flow: row;
-                gap: 5%;
-                padding-inline: unset;
-            }
+    // index.html
 
-            // 1000px
+    .intro {
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        &-container {
+            margin-top: 30px;
+            flex-flow: row;
+            gap: 5%;
+            padding-inline: unset;
         }
+    }
 
-        // Pages
+    // other pages
 
-        .heading__secondary {
-            &__container {
-                max-height: 600px;
-            }
+    .heading--secondary-container {
+        max-height: 600px;
 
-            &__title__container {
-                justify-content: center;
-            }
+        &-body {
+            justify-content: center;
 
-            &__title {
+            &__h1 {
                 width: 50%;
                 font-size: 32px;
             }
 
-            & .btn__card__like {
+            & .button__card__like {
                 width: 10%;
 
                 &__icon {
@@ -865,14 +915,15 @@ p {
                 }
             }
         }
+    }
 
-        .card__secondary {
-            padding-top: 60px;
-            padding-inline: 20%;
-        }
 
-        .btn__calltoaction--modifier {
-            margin-top: 40px;
-        }
+    .menu-card {
+        padding-top: 60px;
+        padding-inline: 20%;
+    }
+
+    .calltoaction__button {
+        margin-top: 40px;
     }
 }
