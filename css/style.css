@@ -929,36 +929,25 @@ p {
 }
 
 @media screen and (min-width: 600px) {
-  .intro-container {
-    padding-inline: 10%;
-  }
-  .main-card {
-    position: relative;
-  }
-  .main-card-heading::after {
-    content: "";
-    position: absolute;
-    display: block;
-    height: 65%;
-    right: 5%;
-    top: 20%;
-    bottom: 0;
-    width: 20px;
-    -webkit-box-shadow: inset -28px 0 30px -43px #000;
-            box-shadow: inset -28px 0 30px -43px #000;
-  }
   .main-card-list {
-    margin-top: 30px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    overflow-x: scroll;
-    gap: 1%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .card {
+    width: 42%;
+  }
+  .intro-container {
+    padding-inline: 10%;
   }
   .card {
     margin: 2%;
-    min-width: 250px;
   }
   .heading--secondary-container {
     max-height: 275px;
@@ -966,6 +955,9 @@ p {
   }
   .heading--secondary-container-body {
     z-index: 1000;
+  }
+  .menu-card-list {
+    gap: 25px;
   }
 }
 @media screen and (min-width: 900px) {
@@ -1000,11 +992,20 @@ p {
   .heading--secondary-container-body .button__card__like__icon {
     font-size: 32px;
   }
+  .menu-card-list {
+    gap: 30px;
+  }
   .menu-card {
     padding-top: 60px;
     padding-inline: 20%;
   }
   .calltoaction__button {
     margin-top: 40px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .main-card-list {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
   }
 }/*# sourceMappingURL=style.css.map */

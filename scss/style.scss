@@ -794,6 +794,7 @@ p {
         transform: translateY(30%);
         opacity: 0;
     }
+
     30% {
         opacity: .3;
     }
@@ -829,37 +830,21 @@ p {
 @media screen and (min-width: 600px) {
 
     // index.html
+    .main-card-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        width: 42%;
+    }
 
     .intro-container {
         padding-inline: 10%;
     }
 
-    .main-card {
-        position: relative;
-
-        &-heading::after {
-            content: "";
-            position: absolute;
-            display: block;
-            height: 65%;
-            right: 5%;
-            top: 20%;
-            bottom: 0;
-            width: 20px;
-            box-shadow: inset -28px 0 30px -43px #000;
-        }
-
-        &-list {
-            margin-top: 30px;
-            flex-direction: row;
-            overflow-x: scroll;
-            gap: 1%;
-        }
-    }
-
     .card {
         margin: 2%;
-        min-width: 250px;
     }
 
     // other pages
@@ -871,6 +856,10 @@ p {
 
     .heading--secondary-container-body {
         z-index: 1000;
+    }
+
+    .menu-card-list {
+        gap: 25px;
     }
 }
 
@@ -913,6 +902,9 @@ p {
         }
     }
 
+    .menu-card-list {
+        gap: 30px;
+    }
 
     .menu-card {
         padding-top: 60px;
@@ -921,5 +913,11 @@ p {
 
     .calltoaction__button {
         margin-top: 40px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .main-card-list {
+        flex-wrap: nowrap;
     }
 }
